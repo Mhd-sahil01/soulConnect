@@ -51,16 +51,16 @@ export const login = async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ email }); 
+        const user = await User.findOne({ email });
         if (!user) {
-            return res.status(httpStatus[401]).json({ success: false, message: "Invalid email or password" });
+            return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(httpStatus[401]).json({ success: false, message: "Invalid email or password" });
+            return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
         }
-        
+
         //jwt token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
@@ -71,9 +71,24 @@ export const login = async (req, res) => {
             maxAge: 5 * 24 * 60 * 60 * 1000
         });
 
-        res.status(httpStatus[200]).json({ success: true, message: "login successfully" });
+        res.status(httpStatus.OK).json({ success: true, message: "Login successfully" });
 
     } catch (error) {
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
-} 
+}
+
+export const logout = async (req, res) => {
+    try {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            maxAge: 5 * 24 * 60 * 60 * 1000
+        });
+
+        res.status(httpStatus.OK).json({success:true, message: "Logout successfully"})
+    } catch (error) {
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
+    }
+}
