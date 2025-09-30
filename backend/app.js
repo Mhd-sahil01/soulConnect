@@ -3,9 +3,14 @@ import { createServer } from "node:http";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const server = createServer(app);
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({credentials:true}));
 
 app.set("port", (process.env.PORT || 8000));
 
