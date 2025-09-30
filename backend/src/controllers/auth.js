@@ -3,21 +3,21 @@ import httpStatus from "http-status";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
 
-export const signUp = async (res, req) => {
+export const signUp = async (req, res) => {
     const { username, nickname, email, password } = req.body;
 
-    try {
-        //check for blank options
-        if (!username || !nickname || !email || !password) {
-            return res.status(httpStatus.NOT_FOUND).json({ success: false, message: "Details cannot be empty" });
-        }
+    //check for blank options
+    if (!username || !nickname || !email || !password) {
+        return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" });
+    }
 
+    try {
         const existingUser1 = await User.findOne({ email });
         const existingUser2 = await User.findOne({ username });
 
         //check if the user already exist
         if (existingUser1 || existingUser2) {
-            return res.status(httpStatus[409]).json({ success: false, message: "User already exist!" });
+            return res.status(httpStatus.CONFLICT).json({ success: false, message: "User already exist!" });
         }
 
         //hash password
@@ -41,5 +41,39 @@ export const signUp = async (res, req) => {
     } catch (error) {
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
-
 }
+
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" })
+    }
+
+    try {
+        const user = await User.findOne({ email }); 
+        if (!user) {
+            return res.status(httpStatus[401]).json({ success: false, message: "Invalid email or password" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(httpStatus[401]).json({ success: false, message: "Invalid email or password" });
+        }
+        
+        //jwt token
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            maxAge: 5 * 24 * 60 * 60 * 1000
+        });
+
+        res.status(httpStatus[200]).json({ success: true, message: "login successfully" });
+
+    } catch (error) {
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
+    }
+} 
