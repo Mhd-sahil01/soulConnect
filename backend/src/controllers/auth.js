@@ -46,16 +46,19 @@ export const signUp = async (req, res) => {
 export const login = async (req, res) => {
     const { email, password } = req.body;
 
+    //check for blank options
     if (!email || !password) {
         return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" })
     }
 
     try {
+        //check if the email is valid
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
         }
 
+        //check if the password is valid
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
@@ -80,6 +83,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
+        //clear the cookie for logout
         res.clearCookie('token', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',

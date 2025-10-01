@@ -6,10 +6,12 @@ dotenv.config();
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import connectToSocket from "./src/config/socket.js";
 import authRoute from "./src/routes/auth.js";
 
 const app = express();
 const server = createServer(app);
+const io = connectToSocket(server);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ credentials: true }));
