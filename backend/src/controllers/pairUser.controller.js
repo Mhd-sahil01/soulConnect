@@ -11,15 +11,17 @@ export const createPair = async (req, res) => {
         const userAlreadyPaired2 = await Pair.findOne({user2:userId, status: "paired"});
 
         if(userAlreadyPaired1 || userAlreadyPaired2) {
-            res.status(httpStatus.CONFLICT).json({success: false, message:"Active pair exist"})
+            return res.status(httpStatus.CONFLICT).json({success: false, message:"Active pair exist"})
         }
 
-        const newPair = await Pair.findOne({user1:userId});
-        newPair.status = "paired";
-        newPair.pairId = newUniqueCode;
+        const newPair = await new Pair({
+            user1: userId,
+            status: "paired",
+            pairId: newUniqueCode
+        });
         await newPair.save();
 
-        res.status(httpStatus.CREATED).json({success:true, message:"New pair created", newUniqueCode});
+        res.status(httpStatus.CREATED).json({success:true, message:"New pair created", newPair});
     } catch (error) {
         console.log("error in createPair controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
