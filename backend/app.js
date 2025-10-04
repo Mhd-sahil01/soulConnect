@@ -7,7 +7,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import connectToSocket from "./src/config/socket.js";
-import authRoute from "./src/routes/auth.js";
+import authRoute from "./src/routes/auth.route.js";
 
 const app = express();
 const server = createServer(app);
