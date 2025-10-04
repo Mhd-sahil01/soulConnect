@@ -21,6 +21,7 @@ export const createPair = async (req, res) => {
 
         res.status(httpStatus.CREATED).json({success:true, message:"New pair created", newUniqueCode});
     } catch (error) {
+        console.log("error in createPair controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 

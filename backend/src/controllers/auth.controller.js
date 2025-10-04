@@ -39,6 +39,7 @@ export const signUp = async (req, res) => {
 
         res.status(httpStatus.CREATED).json({ success: true, message: "Signup successfully" });
     } catch (error) {
+        console.log("error in signUp controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 }
@@ -77,6 +78,7 @@ export const login = async (req, res) => {
         res.status(httpStatus.OK).json({ success: true, message: "Login successfully" });
 
     } catch (error) {
+        console.log("error in login controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 }
@@ -93,6 +95,7 @@ export const logout = async (req, res) => {
 
         res.status(httpStatus.OK).json({success:true, message: "Logout successfully"})
     } catch (error) {
+        console.log("error in logout controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 }
