@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export const signUp = async (req, res) => {
     const { username, nickname, email, password } = req.body;
 
-    //check for blank options
+    // check for blank options
     if (!username || !nickname || !email || !password) {
         return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" });
     }
@@ -15,22 +15,22 @@ export const signUp = async (req, res) => {
         const existingUser1 = await User.findOne({ email });
         const existingUser2 = await User.findOne({ username });
 
-        //check if the user already exist
+        // check if the user already exist
         if (existingUser1 || existingUser2) {
             return res.status(httpStatus.CONFLICT).json({ success: false, message: "User already exist!" });
         }
 
-        //hash password
+        // Hash the password
         const hashPassword = await bcrypt.hash(password, 10);
 
-        //create the new user
+        // Create a new user
         const user = new User({ username, nickname, email, password: hashPassword });
         await user.save();
 
-        //jwt token
+        // JWT token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
-        res.cookie('token', token, {
+        res.cookie('token', token, { // Set cookie
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
@@ -47,25 +47,25 @@ export const signUp = async (req, res) => {
 export const login = async (req, res) => {
     const { email, password } = req.body;
 
-    //check for blank options
+    // check for blank options
     if (!email || !password) {
         return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" })
     }
 
     try {
-        //check if the email is valid
+        // check if the email is valid
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
         }
 
-        //check if the password is valid
+        // check if the password is valid
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(httpStatus.UNAUTHORIZED).json({ success: false, message: "Invalid email or password" });
         }
 
-        //jwt token
+        // JWT token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
         res.cookie('token', token, {
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        //clear the cookie for logout
+        // Clear the cookie for logout
         res.clearCookie('token', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',

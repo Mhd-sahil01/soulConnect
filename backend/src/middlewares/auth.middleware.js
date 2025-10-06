@@ -4,7 +4,7 @@ import httpStatus from "http-status";
 
 export const protectedRoute = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        const token = req.cookies.token; // Get token from cookies
         if(!token) return res.status(httpStatus.UNAUTHORIZED).json({success:false, message:"Token not provided"});
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
