@@ -5,7 +5,7 @@ import { protectedRoute } from "../middlewares/auth.middleware.js";
 const pairRouter = express.Router();
 
 pairRouter.post("/create", protectedRoute, createPair);
-// pairRouter.post("/join/:pairId", joinPair);
-// pairRouter.post("/unpair/:pairId", unPair);
+pairRouter.post("/join/:pairId", protectedRoute, joinPair);
+pairRouter.post("/unpair/:pairId", protectedRoute, unPair);
 
 export default pairRouter;
