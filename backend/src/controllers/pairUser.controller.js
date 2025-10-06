@@ -31,7 +31,7 @@ export const createPair = async (req, res) => {
 
 export const joinPair = async (req, res) => {
     try {
-        const { pairId } = req.params
+        const pairId = req.params.pairId;
         const userId = req.user._id;
         const findPair = await Pair.findOne({pairId: pairId, status: "waiting"});
 
@@ -60,7 +60,21 @@ export const joinPair = async (req, res) => {
 
 export const unPair = async (req, res) => {
     try {
-        res.send("unPair");
+        const pairId = req.params.pairId;
+        const userId = req.user._id;
+
+        const unPair = await Pair.findOne({pairId: pairId, status: "paired"});
+        if(!unPair) {
+            return res.status(httpStatus.NOT_FOUND).json({ success: false, message: "Pair not found"});
+        }
+ 
+        if(unPair.user1 != userId && unPair.user2 != userId){
+            return res.status(httpStatus.FORBIDDEN).json({ success: false, message: "Not the owners of this pair"});
+        }
+
+        await Pair.findByIdAndDelete(unPair._id);
+        res.status(httpStatus.OK).json({success: true, message: " Delete pair successfully"})
+        
     } catch (error) {
         console.log("error in unPair controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
