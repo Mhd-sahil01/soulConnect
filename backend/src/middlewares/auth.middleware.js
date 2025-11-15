@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import httpStatus from "http-status";
 
+// Middleware to protect routes and ensure the user is authenticated
 export const protectedRoute = async (req, res, next) => {
     try {
         const token = req.cookies.token; // Get token from cookies
