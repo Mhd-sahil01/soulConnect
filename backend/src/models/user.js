@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// User schema for storing user information
 const userSchema = new mongoose.Schema({
     username: { type: String, unique: true, required: true },
     nickname: { type: String, required: true },

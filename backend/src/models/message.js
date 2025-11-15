@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Message schema for storing chat messages between users
 const messageSchema = mongoose.Schema({
     senderId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     receiverId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
@@ -8,4 +9,4 @@ const messageSchema = mongoose.Schema({
 }, { timestamps: true });
 
 const Message = mongoose.model("Message", messageSchema);
-export default Message; // testtttttttttt
+export default Message;
