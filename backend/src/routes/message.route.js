@@ -4,7 +4,7 @@ import { protectedRoute } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/:pairId/send", protectedRoute, sendMessage);
+// router.post("/send/:pairId", protectedRoute, sendMessage);
 router.get("/:pairId", protectedRoute, getMessages);
 
-export default router;
+export default messageRouter;

@@ -8,7 +8,8 @@ import cookieParser from "cookie-parser";
 
 import connectToSocket from "./src/config/socket.js";
 import authRoute from "./src/routes/auth.route.js";
-import pairRoute from "./src/routes/pairUser.route.js"
+import pairRoute from "./src/routes/pairUser.route.js";
+import messageRoute from "./src/routes/message.route.js";
 
 const app = express();
 const server = createServer(app);
@@ -22,6 +23,7 @@ app.set("port", (process.env.PORT || 8000));
 app.get("/home", (req, res) => { res.send("Home") });
 app.use("/api/auth", authRoute);
 app.use("/api/pair", pairRoute);
+app.use("/api/message", messageRoute);
 
 async function start() {
     const connectDB = await mongoose.connect(process.env.MONGO_URL)
