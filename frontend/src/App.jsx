@@ -1,11 +1,15 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { Routes, Route } from 'react-router';
+import LandingPage from './pages/LandingPage.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-amber-300">hello</h1>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
     </>
   )
 }
