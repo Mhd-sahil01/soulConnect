@@ -2,12 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import BrowerRouter from 'react-router';
+// import BrowerRouter from 'react-router';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowerRouter>
+    {/* <BrowerRouter> */}
       <App />
-    </BrowerRouter>
+    {/* </BrowerRouter> */}
   </StrictMode>
 )
