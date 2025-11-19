@@ -8,33 +8,23 @@ export default function LandingPage() {
         <>
             <Navbar />
             <div className="relative h-screen w-full bg-black overflow-hidden">
-                <div className="flex flex-col w-screen h-[75vh] items-center justify-center absolute z-20">
-                    <h1 className="text-4xl font-bold text-white mb-4">Feel Close, No Matter the Distance</h1>
-                    <p className="text-lg text-gray-300">SoulConnect lets you call, chat, and watch videos together.</p>
-                    <p className="text-lg text-gray-300">Making long-distance feel effortless</p>
-                    <button className="mt-4 px-6 py-3 bg-[#027FAE] text-white font-semibold rounded-full hover:bg-[#0393C9] transition duration-300">Connect Now</button>
-                </div>
+                <div className="w-screen h-[80vh] absolute flex items-center justify-center mt-20 px-10 gap-5 z-20">
+                    <div className="flex flex-col justify-center items-start ml-10 max-w-xl">
+                        <h1 className="text-4xl font-bold text-white mb-4">Feel Close, No Matter the Distance</h1>
+                        <p className="text-lg text-gray-300"> SoulConnect lets you call, chat, and watch videos together.</p>
+                        <p className="text-lg text-gray-300 mb-4"> Making long-distance feel effortless</p>
+                        <button className="px-6 py-3 bg-[#027FAE] text-white font-semibold rounded-full hover:bg-[#0393C9] transition duration-300"> Connect Now </button>
+                    </div>
 
-                <div className="absolute h-screen flex items-center justify-around inset-0 mt-40 z-20">
-                    <Carousel 
-                        baseWidth={300}
-                        autoplay={true}
-                        autoplayDelay={3000}
-                        pauseOnHover={true}
-                        loop={true}
-                        round={false}
-                    />
-                    <div className=" bg-black bg-opacity-50 border border-white rounded-xl flex items-center justify-center p-6">
-                        <div>
-                            <h2 className="text-2xl font-bold text-white mb-4">Why SoulConnect?</h2>
-                            <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                <li>High-quality video and audio calls</li>
-                                <li>Seamless chat functionality</li>
-                                <li>Watch videos together in real-time</li>
-                                <li>User-friendly interface</li>
-                                <li>Secure and private connections</li>
-                            </ul>
-                        </div>
+                    <div className="flex justify-center items-center">
+                        <Carousel
+                            baseWidth={300}
+                            autoplay={true}
+                            autoplayDelay={3000}
+                            pauseOnHover={true}
+                            loop={true}
+                            round={false}
+                        />
                     </div>
                 </div>
 

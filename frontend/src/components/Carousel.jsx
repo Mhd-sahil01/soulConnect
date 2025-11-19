@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform } from 'motion/react';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import GamesIcon from '@mui/icons-material/Games';
-import ScreenShareIcon from '@mui/icons-material/ScreenShare';
+import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const DEFAULT_ITEMS = [
@@ -11,31 +11,31 @@ const DEFAULT_ITEMS = [
     title: 'Text Animations',
     description: 'Cool text animations for your projects.',
     id: 1,
-    icon: <ChatBubbleIcon className="h-4 w-4 text-white" />
+    icon: <ChatBubbleIcon className="text-white" style={{fontSize:"medium"}} />
   },
   {
     title: 'Animations',
     description: 'Smooth animations for your projects.',
     id: 2,
-    icon: <VideoCallIcon className="h-4 w-4 text-white" />
+    icon: <VideoCallIcon className="text-white" />
   },
   {
     title: 'Components',
     description: 'Reusable components for your projects.',
     id: 3,
-    icon: <GamesIcon className="h-4 w-4 text-white" />
+    icon: <GamesIcon className="text-white" />
   },
   {
     title: 'Backgrounds',
     description: 'Beautiful backgrounds and patterns for your projects.',
     id: 4,
-    icon: <ScreenShareIcon className="h-4 w-4 text-white" />
+    icon: <AddIcCallOutlinedIcon className="text-white" style={{fontSize:"medium"}} />
   },
   {
     title: 'Common UI',
     description: 'Common UI components are coming soon!',
     id: 5,
-    icon: <YouTubeIcon className="h-4 w-4 text-white" />
+    icon: <YouTubeIcon className="text-white" />
   }
 ];
 
@@ -137,7 +137,7 @@ export default function Carousel({
     <div
       ref={containerRef}
       className={`relative overflow-hidden p-4 ${
-        round ? 'rounded-full border border-white' : 'rounded-3xl border border-[#1B444B]'
+        round ? 'rounded-full border border-white' : 'rounded-3xl border border-[#1B444B]/70'
       }`}
       style={{
         width: `${baseWidth}px`,
@@ -171,7 +171,7 @@ export default function Carousel({
               className={`relative shrink-0 flex flex-col ${
                 round
                   ? 'items-center justify-center text-center bg-[#060010] border-0'
-                  : 'items-start justify-between bg-gradient-to-br from-[#1B444B] via-[#0F2A2E] to-[#071517] border border-[#1B444B] rounded-xl'
+                  : 'items-start justify-between bg-linear-to-br from-[#1B444B] via-[#0F2A2E] to-[#071517] border border-[#1B444B] rounded-xl'
               } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
