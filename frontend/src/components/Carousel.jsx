@@ -1,41 +1,41 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform } from 'motion/react';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import VideoCallIcon from '@mui/icons-material/VideoCall';
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import GamesIcon from '@mui/icons-material/Games';
 import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const DEFAULT_ITEMS = [
   {
-    title: 'Text Animations',
-    description: 'Cool text animations for your projects.',
+    title: 'Real-Time Chat',
+    description: 'Stay connected with smooth, real-time messaging',
     id: 1,
-    icon: <ChatBubbleIcon className="text-white" style={{fontSize:"medium"}} />
+    icon: <ChatBubbleIcon className="text-white" style={{ fontSize: "medium" }} />
   },
   {
-    title: 'Animations',
-    description: 'Smooth animations for your projects.',
+    title: 'Watch Together',
+    description: 'Enjoy movies, videos, and YouTube side-by-side with synced playback.',
     id: 2,
-    icon: <VideoCallIcon className="text-white" />
+    icon: <YouTubeIcon className="text-white" />
   },
   {
-    title: 'Components',
-    description: 'Reusable components for your projects.',
+    title: 'Interactive Moments',
+    description: 'Play and enjoy one to one games',
     id: 3,
     icon: <GamesIcon className="text-white" />
   },
   {
-    title: 'Backgrounds',
-    description: 'Beautiful backgrounds and patterns for your projects.',
+    title: 'Calls',
+    description: 'audio and video calls that make distance feel invisible.',
     id: 4,
-    icon: <AddIcCallOutlinedIcon className="text-white" style={{fontSize:"medium"}} />
+    icon: <AddIcCallOutlinedIcon className="text-white" style={{ fontSize: "medium" }} />
   },
   {
-    title: 'Common UI',
-    description: 'Common UI components are coming soon!',
+    title: 'Shared Experiences',
+    description: 'More features coming soon — create memories together from anywhere in the world.',
     id: 5,
-    icon: <YouTubeIcon className="text-white" />
+    icon: <MoreHorizOutlinedIcon className="text-white" />
   }
 ];
 
@@ -127,18 +127,17 @@ export default function Carousel({
   const dragProps = loop
     ? {}
     : {
-        dragConstraints: {
-          left: -trackItemOffset * (carouselItems.length - 1),
-          right: 0
-        }
-      };
+      dragConstraints: {
+        left: -trackItemOffset * (carouselItems.length - 1),
+        right: 0
+      }
+    };
 
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden p-4 ${
-        round ? 'rounded-full border border-white' : 'rounded-3xl border border-[#1B444B]/70'
-      }`}
+      className={`relative overflow-hidden p-4 ${round ? 'rounded-full border border-white' : 'rounded-3xl border border-[#1B444B]/70'
+        }`}
       style={{
         width: `${baseWidth}px`,
         ...(round && { height: `${baseWidth}px` })
@@ -168,11 +167,10 @@ export default function Carousel({
           return (
             <motion.div
               key={index}
-              className={`relative shrink-0 flex flex-col ${
-                round
+              className={`relative shrink-0 flex flex-col ${round
                   ? 'items-center justify-center text-center bg-[#060010] border-0'
                   : 'items-start justify-between bg-linear-to-br from-[#1B444B] via-[#0F2A2E] to-[#071517] border border-[#1B444B] rounded-xl'
-              } overflow-hidden cursor-grab active:cursor-grabbing`}
+                } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
                 height: round ? itemWidth : '100%',
@@ -199,15 +197,14 @@ export default function Carousel({
           {items.map((_, index) => (
             <motion.div
               key={index}
-              className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${
-                currentIndex % items.length === index
+              className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${currentIndex % items.length === index
                   ? round
                     ? 'bg-white'
                     : 'bg-linear-to-br from-[#1B444B] via-[#0F2A2E] to-[#071517]'
                   : round
                     ? 'bg-[#555]'
                     : 'bg-[rgba(51,51,51,0.4)]'
-              }`}
+                }`}
               animate={{
                 scale: currentIndex % items.length === index ? 1.2 : 1
               }}
