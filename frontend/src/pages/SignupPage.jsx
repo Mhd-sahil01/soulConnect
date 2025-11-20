@@ -16,23 +16,36 @@ export default function SignupPage() {
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Username</label>
-                                <input type="text" name="username" className="bg-gray-700 p-2 rounded outline-none" />
+                                <input
+                                    type="text"
+                                    name="username"
+                                    className="bg-gray-700 p-2 rounded outline-none" />
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Nickname</label>
-                                <input type="text" name="nickname" className="bg-gray-700 p-2 rounded outline-none" />
+                                <input
+                                    type="text"
+                                    name="nickname"
+                                    className="bg-gray-700 p-2 rounded outline-none"
+                                />
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Email</label>
-                                <input type="email" name="email" className="bg-gray-700 p-2 rounded outline-none"
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="bg-gray-700 p-2 rounded outline-none"
                                 />
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Password</label>
-                                <input type="password" name="password" className="bg-gray-700 p-2 rounded outline-none" />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    className="bg-gray-700 p-2 rounded outline-none" />
                             </div>
 
                             <button className="bg-[#027FAE] w-full py-3 rounded-lg font-semibold hover:bg-[#0393C9] transition">
