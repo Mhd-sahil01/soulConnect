@@ -79,7 +79,6 @@ export default function SignupPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

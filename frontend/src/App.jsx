@@ -3,17 +3,21 @@ import { Routes, Route } from 'react-router';
 import LandingPage from './pages/LandingPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+    <div className="flex flex-col min-h-screen">
+      <div className="grow">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   )
 }

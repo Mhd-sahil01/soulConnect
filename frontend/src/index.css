@@ -2,6 +2,7 @@
 
 body {
     cursor: url('./public/cursor2.cur'), auto;
+    background-color: #000000;
 }
 
 button {
