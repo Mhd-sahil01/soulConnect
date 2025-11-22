@@ -16,17 +16,17 @@ export default function LoginPage() {
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
+                                <input 
+                                    type="email" 
+                                    name="email" 
                                     className="bg-gray-700 p-2 rounded outline-none"
                                 />
                             </div>
 
                             <div className="flex flex-col">
                                 <label className="mb-1 text-gray-300">Password</label>
-                                <input
-                                    type="password"
+                                <input 
+                                    type="password" 
                                     name="password"
                                     className="bg-gray-700 p-2 rounded outline-none"
                                 />
@@ -39,13 +39,14 @@ export default function LoginPage() {
                         </form>
 
                         <div className="text-center text-sm text-gray-600 pt-4">
-                            <p>Don't have an account?
+                            <p>Don't have an account? 
                                 <span className="font-medium hover:underline"> Sign Up</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <Footer />
         </>
     );

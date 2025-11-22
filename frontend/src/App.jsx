@@ -8,13 +8,13 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div style={{cursor: "url('../public/cursor2.cur'), auto"}}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-    </>
+    </div>
   )
 }
 
