@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+body {
+    cursor: url('./public/cursor2.cur'), auto;
+}
+
+button {
+    cursor: url('./public/cursor2.cur'), pointer;
+}
+
+form input, form select, form textarea {
+    cursor: url('./public/cursor2.cur'), text;
+}
