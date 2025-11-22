@@ -1,15 +1,15 @@
-import Footer from "../components/Footer";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import CommunitySection from '../components/CommunitySection.jsx';
 
 export default function SignupPage() {
     return (
         <>
             <div className="h-full relative overflow-x-hidden bg-black text-white p-4">
-                <div className="flex flex-col lg:flex-row h-[90vh] rounded-2xl shadow-xl max-w-6xl">
+                <div className="flex flex-col lg:flex-row h-[90vh] rounded-4xl overflow-hidden shadow-xl max-w-6xl">
 
-                    {/* // for Community Section */}
+                    <CommunitySection />
 
                     <div className="w-full lg:w-7/12 bg-black flex flex-col justify-center items-center gap-4 p-5 md:p-12 border border-[#1B444B]/70">
                         <h2 className="text-3xl font-bold text-white">Create Account</h2>

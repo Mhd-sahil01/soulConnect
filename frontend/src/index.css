@@ -1,14 +1,9 @@
 @import "tailwindcss";
 
+* {
+    cursor: url('./public/cursor2.cur'), auto !important;
+}
+
 body {
-    cursor: url('./public/cursor2.cur'), auto;
-    background-color: #000000;
-}
-
-button {
-    cursor: url('./public/cursor2.cur'), pointer;
-}
-
-form input, form select, form textarea {
-    cursor: url('./public/cursor2.cur'), text;
+    background: #000000;
 }

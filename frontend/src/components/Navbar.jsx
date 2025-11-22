@@ -6,11 +6,11 @@ const Navbar = () => {
       </h1>
 
       <div className="flex items-center gap-4 ml-auto">
-        <button className=" px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96]">
+        <button className=" px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96] transition-all duration-300 hover:scale-105">
           Login
         </button>
 
-        <button className=" px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96]">
+        <button className=" px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96] transition-all duration-300 hover:scale-105">
           Sign Up
         </button>
       </div>
