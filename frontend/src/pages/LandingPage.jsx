@@ -12,7 +12,7 @@ export default function LandingPage() {
                         <h1 className="text-2xl md:text-4xl font-bold text-white mb-4">Feel Close, No Matter the Distance</h1>
                         <p className="text-md md:text-lg text-gray-300"> SoulConnect lets you call, chat, and watch videos together.</p>
                         <p className="text-md md:text-lg text-gray-300 mb-4"> Making long-distance feel effortless</p>
-                        <button className="px-6 py-3 bg-[#027FAE] text-white font-semibold rounded-full hover:bg-[#0393C9] transition-all duration-300 hover:scale-105"> Connect Now </button>
+                        <button className="px-6 py-3 bg-[#027FAE] hover:bg-[#0393C9] text-white font-semibold rounded-full  transition-all duration-300 hover:scale-105"> Connect Now </button>
                     </div>
 
                     <div className="flex justify-center items-center">
