@@ -14,9 +14,41 @@ export default function SignupPage() {
         password: ""
     });
 
+    const validateForm = () => {
+        if(!formData.email.trim()) {
+            toast.error("Email is required");
+            return false;
+        }
+        if(!formData.username.trim()) {
+            toast.error("Username is required");
+            return false;
+        }
+        if(!formData.nickname.trim()) {
+            toast.error("Nickname is required");
+            return false;
+        }
+        if(!formData.password) {
+            toast.error("Password is required");
+            return false;
+        }
+        if(!/\S+@\S+\.\S+/.test(formData.email)) {
+            toast.error("Invalid email format");
+            return false;
+        }
+        if(formData.password.length < 8) {
+            toast.error("Password must be at least 8 characters");
+            return false;
+        }
+
+        return true;
+     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        toast.success("Signup successful!");
+        const isValid = validateForm();
+        if(isValid == true) {
+            toast.success("Signup successful!");
+        }
     }
 
     return (
