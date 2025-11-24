@@ -1,9 +1,24 @@
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CommunitySection from '../components/CommunitySection.jsx';
 
 export default function SignupPage() {
+
+    const [formData, setFormData] = useState({
+        email: "",
+        username: "",
+        nickname: "",
+        password: ""
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast.success("Signup successful!");
+    }
+
     return (
         <>
             <div className="min-h-screen relative overflow-x-hidden bg-black text-white p-4">
@@ -15,7 +30,7 @@ export default function SignupPage() {
                         <h2 className="text-2xl sm:text-3xl font-bold text-white">Create Account</h2>
 
                         <div className="w-full max-w-md p-6 bg-linear-to-br from-[#1E5A63] via-[#123A40] to-[#082024] rounded-lg shadow-md border border-[#1B444B]/70 ">
-                            <form className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-2">
                                     <label htmlFor="email" className="block text-sm font-medium text-white">
                                         <span className="flex items-center gap-2">
@@ -27,6 +42,7 @@ export default function SignupPage() {
                                         id="email"
                                         className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
                                         placeholder="your@email.com"
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     />
                                 </div>
 
@@ -41,6 +57,7 @@ export default function SignupPage() {
                                         id="username"
                                         className="w-full px-4 py-2 rounded-lg border border-gray-300shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
                                         placeholder="username"
+                                        onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                                     />
                                 </div>
 
@@ -55,6 +72,7 @@ export default function SignupPage() {
                                         id="nickname"
                                         className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
                                         placeholder="nickname"
+                                        onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
                                     />
                                 </div>
 
@@ -69,6 +87,7 @@ export default function SignupPage() {
                                         id="password"
                                         className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
                                         placeholder="••••••••"
+                                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     />
                                 </div>
 

@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import Footer from './components/Footer.jsx';
+import Toaster from './lib/ToasterTheme.jsx';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
+      <Toaster />
       <Footer />
     </div>
   )
