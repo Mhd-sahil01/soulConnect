@@ -5,6 +5,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CommunitySection from '../components/CommunitySection.jsx';
 import { useAuthContext } from '../context/AuthContext.jsx';
+import { Link } from 'react-router';
 
 export default function SignupPage() {
 
@@ -51,7 +52,6 @@ export default function SignupPage() {
         const isValid = validateForm();
         if(isValid == true) {
             signup(formData);
-            toast.success("Signup successful!");
         }
     }
 
@@ -136,9 +136,9 @@ export default function SignupPage() {
                         <div className="text-center text-sm text-gray-500">
                             <p>
                                 Already have an account?
-                                <span className="text-[#0AA5BF] font-medium hover:underline cursor-pointer">
+                                <Link to="/login" className="text-[#0AA5BF] font-medium hover:underline cursor-pointer">
                                     Login
-                                </span>
+                                </Link>
                             </p>
                         </div>
                     </div>
