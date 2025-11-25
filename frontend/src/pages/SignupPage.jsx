@@ -4,8 +4,11 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CommunitySection from '../components/CommunitySection.jsx';
+import { useAuthContext } from '../context/AuthContext.jsx';
 
 export default function SignupPage() {
+
+    const { signup } = useAuthContext();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -47,6 +50,7 @@ export default function SignupPage() {
         e.preventDefault();
         const isValid = validateForm();
         if(isValid == true) {
+            signup(formData);
             toast.success("Signup successful!");
         }
     }

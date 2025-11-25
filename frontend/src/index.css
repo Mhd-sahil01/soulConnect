@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 * {
-    cursor: url('./public/cursor2.cur'), auto !important;
+    cursor: url('./public/cursor.cur'), auto !important;
 }
 
 body {

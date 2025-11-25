@@ -170,7 +170,7 @@ export default function Carousel({
               className={`relative shrink-0 flex flex-col ${round
                   ? 'items-center justify-center text-center bg-[#060010] border-0'
                   : 'items-start justify-between bg-linear-to-br from-[#1B444B] via-[#0F2A2E] to-[#071517] border border-[#1B444B] rounded-xl'
-                } overflow-hidden cursor-grab active:cursor-grabbing`}
+                } overflow-hidden cursor-grab! active:cursor-grabbing!`}
               style={{
                 width: itemWidth,
                 height: round ? itemWidth : '100%',

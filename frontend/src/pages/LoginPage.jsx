@@ -3,8 +3,11 @@ import toast from 'react-hot-toast';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CommunitySection from '../components/CommunitySection.jsx';
+import { useAuthContext } from '../context/AuthContext.jsx';
 
 export default function LoginPage() {
+
+    const { login } = useAuthContext();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -35,6 +38,7 @@ export default function LoginPage() {
         e.preventDefault();
         const isValid = validateForm();
         if(isValid == true) {
+            login(formData);
             toast.success("Login successful!");
         }
     }   
