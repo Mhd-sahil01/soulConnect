@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import axiosInstance from "../lib/axiosInstance.js";
+import httpStatus from "http-status";
 
 export const AuthContext = createContext({});
 
@@ -17,7 +18,7 @@ export const AuthProvider = ({ children }) => {
             console.log("Error in signup: authContext", error.response.data.message);
         }
     }
-    const login = async () => {
+    const login = async (formData) => {
         try {
             const response = await axiosInstance.post('/auth/login', formData);
             if(response.status === httpStatus.OK) {

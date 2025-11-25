@@ -16,7 +16,10 @@ const server = createServer(app);
 const io = connectToSocket(server);
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true }));
+app.use(cors({ 
+    origin: process.env.CLIENT_URL,
+    credentials: true
+ }));
 
 app.set("port", (process.env.PORT || 8000));
 
