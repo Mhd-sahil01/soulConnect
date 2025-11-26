@@ -91,7 +91,7 @@ export default function SignupPage() {
                                     <input
                                         type="text"
                                         id="username"
-                                        className="w-full px-4 py-2 rounded-lg border border-gray-300shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
+                                        className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
                                         placeholder="username"
                                         onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                                     />

@@ -37,7 +37,15 @@ export const signUp = async (req, res) => {
             maxAge: 5 * 24 * 60 * 60 * 1000
         });
 
-        res.status(httpStatus.CREATED).json({ success: true, message: "Signup successfully"});
+        res.status(httpStatus.CREATED).json({
+            success: true, message: "Signup successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                nickname: user.nickname,
+                email: user.email
+            }
+        });
     } catch (error) {
         console.log("error in signUp controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
@@ -46,7 +54,6 @@ export const signUp = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
-
     // check for blank options
     if (!email || !password) {
         return res.status(httpStatus.BAD_REQUEST).json({ success: false, message: "All fields are required!" })
@@ -75,8 +82,15 @@ export const login = async (req, res) => {
             maxAge: 5 * 24 * 60 * 60 * 1000
         });
 
-        res.status(httpStatus.OK).json({ success: true, message: "Login successfully" });
-
+        res.status(httpStatus.OK).json({
+            success: true, message: "Login successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                nickname: user.nickname,
+                email: user.email
+            }
+        });
     } catch (error) {
         console.log("error in login controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
@@ -93,7 +107,7 @@ export const logout = async (req, res) => {
             maxAge: 5 * 24 * 60 * 60 * 1000
         });
 
-        res.status(httpStatus.OK).json({success:true, message: "Logout successfully"})
+        res.status(httpStatus.OK).json({ success: true, message: "Logout successfully" })
     } catch (error) {
         console.log("error in logout controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
