@@ -19,9 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            console.log("insideeeeeeeeeeee checkauth");
             const response = await axiosInstance.get('/auth/check');
-            console.log("response : ", response.data.user);
             setUser(response.data.user);
         } catch (error) {
             console.log("Error in checkAuth: authContext", error.response.data.message);
@@ -38,8 +36,8 @@ export const AuthProvider = ({ children }) => {
                 toast.error(response.data.message);
             }
             if (response.status === httpStatus.CREATED) {
-                toast.success(response.data.message);
                 setUser(response.data.user);
+                toast.success(response.data.message);
                 navigate('/');
             }
         } catch (error) {
@@ -58,8 +56,8 @@ export const AuthProvider = ({ children }) => {
                 toast.error(response.data.message);
             }
             if (response.status === httpStatus.OK) {
-                toast.success(response.data.message);
                 setUser(response.data.user);
+                toast.success(response.data.message);
                 navigate('/');
             }
         } catch (error) {
@@ -70,10 +68,25 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const logout = async () => {
+        try {
+            const response = await axiosInstance.post('/auth/logout');
+            if (response.status === httpStatus.OK) {
+                setUser(null);
+                toast.success(response.data.message);
+                navigate('/');
+            }
+        } catch (error) {
+            toast.error("Internal Server Error");
+            console.log("Error in logout: authContext", error.response.data.message);
+        }
+    }
+
     const data = {
         checkAuth,
         signup,
         login,
+        logout,
         user,
         isCheckingAuth,
         isLogin,
