@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 
 export default function LoginPage() {
 
-    const { login } = useAuthContext();
+    const { login } = useAuthContext(); 
 
     const [formData, setFormData] = useState({
         email: "",

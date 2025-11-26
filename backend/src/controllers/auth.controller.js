@@ -115,5 +115,6 @@ export const logout = async (req, res) => {
 }
 
 export const checkAuth = (req, res) => {
+    console.log(req.user);
     res.status(httpStatus.OK).json({ success: true, message: "User is authenticated", user: req.user });
 }
