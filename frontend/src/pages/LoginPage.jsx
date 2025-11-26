@@ -15,6 +15,7 @@ export default function LoginPage() {
         password: ""
     });
 
+    // Validate form inputs
     const validateForm = () => {
         if (!formData.email.trim()) {
             toast.error("Email is required");
@@ -53,11 +54,7 @@ export default function LoginPage() {
                     <div className="w-full lg:w-7/12 bg-black flex flex-col justify-center 
                     items-center gap-6 p-4 sm:p-8 md:p-12 border border-[#1B444B]/70">
                         <h2 className="text-2xl sm:text-3xl font-bold">Welcome Back</h2>
-
-                        <div className="w-full max-w-sm sm:max-w-md p-5 sm:p-6
-                        bg-linear-to-br from-[#1E5A63] via-[#123A40] to-[#082024]
-                        rounded-xl shadow-md border border-[#1B444B]/70">
-
+                        <div className="w-full max-w-sm sm:max-w-md p-5 sm:p-6 bg-linear-to-br from-[#1E5A63] via-[#123A40] to-[#082024] rounded-xl shadow-md border border-[#1B444B]/70">
                             <form className="space-y-4" onSubmit={handleSubmit}>
                                 <div className="space-y-2">
                                     <label

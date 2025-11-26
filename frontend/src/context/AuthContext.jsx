@@ -5,18 +5,18 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 
 export const AuthContext = createContext({});
-
 export const useAuthContext = () => useContext(AuthContext);
-
+// Provider component
 export const AuthProvider = ({ children }) => {
 
     const navigate = useNavigate();
-
+    // State to hold user info and auth status
     const [user, setUser] = useState(null);
     const [isCheckingAuth, setIsCheckingAuth] = useState(true);
     const [isLogin, setIsLogin] = useState(false);
     const [isSignin, setIsSignin] = useState(false);
 
+    // Function to check if user is authenticated
     const checkAuth = async () => {
         try {
             const response = await axiosInstance.get('/auth/check');
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
             setIsCheckingAuth(false);
         }
     }
-
+    // Function to handle user signup
     const signup = async (formData) => {
         try {
             setIsSignin(true);
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
             setIsSignin(false);
         }
     }
-
+    // Function to handle user login
     const login = async (formData) => {
         try {
             setIsLogin(true);
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
             setIsLogin(false);
         }
     }
-
+    // Function to handle user logout
     const logout = async () => {
         try {
             const response = await axiosInstance.post('/auth/logout');

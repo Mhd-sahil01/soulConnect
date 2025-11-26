@@ -18,6 +18,7 @@ export default function SignupPage() {
         password: ""
     });
 
+    // Validate form inputs
     const validateForm = () => {
         if(!formData.email.trim()) {
             toast.error("Email is required");
@@ -59,7 +60,7 @@ export default function SignupPage() {
         <>
             <div className="min-h-screen relative overflow-x-hidden bg-black text-white p-4">
                 <div className="flex flex-col lg:flex-row min-h-[85vh] rounded-2xl overflow-hidden shadow-xl max-w-6xl mx-auto">
-
+                                 
                     <CommunitySection />
 
                     <div className="w-full lg:w-7/12 bg-black flex flex-col justify-center items-center gap-4 p-6 sm:p-10 md:p-12 border border-[#1B444B]/70">

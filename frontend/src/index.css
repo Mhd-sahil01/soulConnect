@@ -27,3 +27,7 @@ body {
 .login-input {
   @apply w-full px-4 py-2 border border-gray-300 rounded-lg bg-black/20 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all;
 }
+
+.nav-connect-btn {
+  @apply px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96] transition-all duration-300 hover:scale-105 hidden md:block;
+}
