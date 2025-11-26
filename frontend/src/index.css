@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 * {
-    cursor: url('./public/cursor.cur'), auto !important;
+  cursor: url('./public/cursor.cur'), auto !important;
 }
 
 body {
-    background: #000000;
+  background: #000000;
 }
 
 .hover-glow {
@@ -15,7 +15,15 @@ body {
 .hover-glow:hover {
   transform: scale(1.05);
   color: #05D5FF;
-  text-shadow: 
+  text-shadow:
     0 0 5px rgba(5, 213, 255, 0.3),
     0 0 9px rgba(5, 213, 255, 0.3);
+}
+
+.signup-input {
+  @apply w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all;
+}
+
+.login-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg bg-black/20 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all;
 }

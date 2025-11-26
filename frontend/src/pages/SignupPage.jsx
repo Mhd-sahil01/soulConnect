@@ -76,7 +76,7 @@ export default function SignupPage() {
                                     <input
                                         type="email"
                                         id="email"
-                                        className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
+                                        className="signup-input"
                                         placeholder="your@email.com"
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     />
@@ -91,7 +91,7 @@ export default function SignupPage() {
                                     <input
                                         type="text"
                                         id="username"
-                                        className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
+                                        className="signup-input"
                                         placeholder="username"
                                         onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                                     />
@@ -106,7 +106,7 @@ export default function SignupPage() {
                                     <input
                                         type="text"
                                         id="nickname"
-                                        className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
+                                        className="signup-input"
                                         placeholder="nickname"
                                         onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
                                     />
@@ -121,7 +121,7 @@ export default function SignupPage() {
                                     <input
                                         type="password"
                                         id="password"
-                                        className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all"
+                                        className="signup-input"
                                         placeholder="••••••••"
                                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     />

@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 
 export default function LoginPage() {
 
-    const { login } = useAuthContext(); 
+    const { login } = useAuthContext();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -16,32 +16,32 @@ export default function LoginPage() {
     });
 
     const validateForm = () => {
-        if(!formData.email.trim()) {
+        if (!formData.email.trim()) {
             toast.error("Email is required");
             return false;
         }
-        if(!formData.password) {
+        if (!formData.password) {
             toast.error("Password is required");
             return false;
         }
-        if(!/\S+@\S+\.\S+/.test(formData.email)) {
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
             toast.error("Invalid email format");
             return false;
         }
-        if(formData.password.length < 8) {
+        if (formData.password.length < 8) {
             toast.error("Password must be at least 8 characters");
             return false;
         }
         return true;
-     }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validateForm();
-        if(isValid == true) {
+        if (isValid == true) {
             login(formData);
         }
-    }   
+    }
 
     return (
         <>
@@ -70,10 +70,7 @@ export default function LoginPage() {
                                     <input
                                         type="email"
                                         id="email"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg
-                                        bg-black/20 text-white shadow-sm
-                                        focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] 
-                                        transition-all"
+                                        className="login-input"
                                         placeholder="your@email.com"
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     />
@@ -89,10 +86,7 @@ export default function LoginPage() {
                                     <input
                                         type="password"
                                         id="password"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg
-                                        bg-black/20 text-white shadow-sm
-                                        focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] 
-                                        transition-all"
+                                        className="login-input"
                                         placeholder="••••••••"
                                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     />
