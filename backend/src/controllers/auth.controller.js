@@ -37,7 +37,7 @@ export const signUp = async (req, res) => {
             maxAge: 5 * 24 * 60 * 60 * 1000
         });
 
-        res.status(httpStatus.CREATED).json({ success: true, message: "Signup successfully" });
+        res.status(httpStatus.CREATED).json({ success: true, message: "Signup successfully"});
     } catch (error) {
         console.log("error in signUp controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
@@ -98,4 +98,8 @@ export const logout = async (req, res) => {
         console.log("error in logout controller");
         res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
+}
+
+export const checkAuth = (req, res) => {
+    res.status(httpStatus.OK).json({ success: true, message: "User is authenticated", user: req.user });
 }

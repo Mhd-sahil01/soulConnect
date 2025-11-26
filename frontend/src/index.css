@@ -16,6 +16,6 @@ body {
   transform: scale(1.05);
   color: #05D5FF;
   text-shadow: 
-    0 0 5px rgba(5, 213, 255, 0.7),
-    0 0 9px rgba(5, 213, 255, 0.7);
+    0 0 5px rgba(5, 213, 255, 0.3),
+    0 0 9px rgba(5, 213, 255, 0.3);
 }
