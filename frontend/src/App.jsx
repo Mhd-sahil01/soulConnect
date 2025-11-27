@@ -19,9 +19,9 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <div className="grow">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={user ? <LandingPage /> : <LoginPage />} />
+            <Route path="/signup" element={!user ? <SignupPage /> : <LandingPage />} />
+            <Route path="/login" element={!user ? <LoginPage /> : <LandingPage />} />
           </Routes>
         </div>
         <Toaster />
