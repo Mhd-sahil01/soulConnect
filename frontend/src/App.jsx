@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import Footer from './components/Footer.jsx';
 import Toaster from './lib/ToasterTheme.jsx';
 import { useAuthContext } from './context/AuthContext.jsx';
+import Loading from './components/Loading.jsx';
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
     checkAuth();
   }, []);
 
+  if (isCheckingAuth) {
+    return <Loading />;
+  }
+  
   return (
       <div className="flex flex-col min-h-screen">
         <div className="grow">
@@ -22,6 +27,7 @@ function App() {
             <Route path="/" element={user ? <LandingPage /> : <LoginPage />} />
             <Route path="/signup" element={!user ? <SignupPage /> : <LandingPage />} />
             <Route path="/login" element={!user ? <LoginPage /> : <LandingPage />} />
+            {/* <Route path="/loading" element={<Loading />} /> */}
           </Routes>
         </div>
         <Toaster />
