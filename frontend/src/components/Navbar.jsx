@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import ArrowCircleDownOutlinedIcon from '@mui/icons-material/ArrowCircleDownOutlined';
 import { useAuthContext } from "../context/AuthContext";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const { logout, user } = useAuthContext();
@@ -34,8 +34,8 @@ const Navbar = () => {
             onClick={() => {
               setOpenExplore(!openExplore);
             }}
-            className="px-5 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96] transition-all duration-300 hover:scale-105"
-          >Explore <ArrowCircleDownOutlinedIcon fontSize="small" /></button>
+            className="px-4 py-2 text-white font-semibold rounded-full bg-[#2A6C76] hover:bg-[#358A96] transition-all duration-300 hover:scale-105"
+          >Explore <ChevronDown className="inline-block size-5" /></button>
           {openExplore && (
             <div className="absolute right-0 mt-2 w-40 bg-[#1B444B] text-white rounded-xl shadow-lg border border-white/10 p-2">
               <button className="w-full text-left px-3 py-2 hover:bg-[#2A6C76] rounded-lg">Join Room</button>

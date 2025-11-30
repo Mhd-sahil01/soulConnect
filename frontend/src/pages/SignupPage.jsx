@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 
 export default function SignupPage() {
 
-    const { signup } = useAuthContext();
+    const { signup, isSignin } = useAuthContext();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -129,8 +129,9 @@ export default function SignupPage() {
                                 </div>
 
                                 <button type="submit"
-                                    className=" w-full py-3 px-4 rounded-lg shadow-sm text-sm font-medium text-white bg-[#0AA5BF] hover:bg-[#088EA5] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0AA5BF] transition-all hover:scale-[1.02]">
-                                    Sign Up
+                                    className=" w-full py-3 px-4 rounded-lg shadow-sm text-sm font-medium text-white bg-[#0AA5BF] hover:bg-[#088EA5] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0AA5BF] transition-all hover:scale-[1.02]"
+                                    disabled={isSignin}>
+                                    {isSignin ? 'Signing Up...' : 'Sign Up'}
                                 </button>
                             </form>
                         </div>

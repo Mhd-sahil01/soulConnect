@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 
 export default function LoginPage() {
 
-    const { login } = useAuthContext();
+    const { login, isLogin } = useAuthContext();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -95,8 +95,9 @@ export default function LoginPage() {
                                     bg-[#0AA5BF] hover:bg-[#088EA5] 
                                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0AA5BF]
                                     transition-all hover:scale-[1.02]"
+                                    disabled={isLogin}
                                 >
-                                    Login
+                                    {isLogin ? 'Logging In...' : 'Login'}
                                 </button>
 
                             </form>
