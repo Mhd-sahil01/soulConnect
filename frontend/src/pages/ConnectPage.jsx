@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Join from '../components/Join.jsx';
+import Create from '../components/Create.jsx';
 
 export default function ConnectPage() {
 
@@ -18,7 +19,11 @@ export default function ConnectPage() {
                             onClick={() => setFormState(1)}>Create</button>
                     </div>
                     <div className="w-half max-w-sm sm:max-w-md p-5 sm:p-6 bg-black rounded-xl shadow-md border border-[#1B444B]/70">
-                        <Join/>
+                        {
+                            formState === 0 ?
+                                <Join/> :
+                                <Create/>
+                        }
                     </div>
                 </div>
             </div >
