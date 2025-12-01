@@ -16,8 +16,7 @@ const Navbar = () => {
       </h1>
 
       <div className="flex items-center gap-4 ml-auto">
-        <button className="nav-connect-btn"> Join </button>
-        <button className="nav-connect-btn"> Create </button>
+        <button className="nav-connect-btn" onClick={() => navigate('/connect')}> Connect </button>
         {/* if user exist shows logout if not then signup - screen:md */}
         {user ? (
           <button className="px-5 py-2 text-white font-semibold rounded-full bg-[#027FAE] hover:bg-[#0393C9] transition-all duration-300 hover:scale-105 hidden md:block"
@@ -38,8 +37,9 @@ const Navbar = () => {
           >Explore <ChevronDown className="inline-block size-5" /></button>
           {openExplore && (
             <div className="absolute right-0 mt-2 w-40 bg-[#1B444B] text-white rounded-xl shadow-lg border border-white/10 p-2">
-              <button className="w-full text-left px-3 py-2 hover:bg-[#2A6C76] rounded-lg">Join Room</button>
-              <button className="w-full text-left px-3 py-2 hover:bg-[#2A6C76] rounded-lg">Create Room</button>
+              <button className="w-full text-left px-3 py-2 hover:bg-[#2A6C76] rounded-lg" 
+              onClick={() => navigate('/connect')}>
+                Connect</button>\
               {/* if user exist shows logout if not then signup - screen:mobile */}
               {user ? (
                 <button className="w-full text-left px-3 py-2 hover:bg-[#2A6C76] rounded-lg"
