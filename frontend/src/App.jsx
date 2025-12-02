@@ -8,6 +8,7 @@ import Toaster from './lib/ToasterTheme.jsx';
 import { useAuthContext } from './context/AuthContext.jsx';
 import Loading from './components/Loading.jsx';
 import ConnectPage from './pages/ConnectPage.jsx';
+import Dashboard from './pages/Dashboard.jsx'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/signup" element={!user ? <SignupPage /> : <Navigate to="/" />} />
             <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
             <Route path="/connect" element={user ? <ConnectPage /> : <Navigate to="/login" />} />
+            <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to={"/login"}/>} />
           </Routes>
         </div>
         <Toaster />
