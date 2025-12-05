@@ -55,7 +55,7 @@ export default function UserProfile() {
 
             <div className="flex flex-col justify-center">
                 <div className="text-xs md:text-sm text-green-500">online</div>
-                <div className="text-xs md:text-sm text-gray-300">Name of the per</div>
+                <div className="text-xs md:text-sm text-gray-300">Name of the person</div>
             </div>
         </Stack>
     );

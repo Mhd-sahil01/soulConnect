@@ -1,6 +1,7 @@
 import { MessageSquare, Phone, Video, Gamepad2, Tv } from "lucide-react";
 import { useNavigate } from "react-router";
 import UserProfile from "../components/UserProfile";
+import Particles from "../components/Particles";
 
 export default function CollaborativeDashboard() {
     const navigate = useNavigate();
@@ -14,26 +15,37 @@ export default function CollaborativeDashboard() {
     ];
 
     return (
-        <div className=" h-screen w-full bg-black overflow-hidden text-white">
-            <div className="flex justify-between p-4">
-                <UserProfile/>
-                <UserProfile/>
-            </div>
-            <div className="h-[90%] w-full md:w-[90%] flex flex-col justify-center items-center gap-6 px-6 md:mx-auto border border-[#1B444B]/70">
-                <h1 className="text-2xl md:text-3xl font-bold">Together Zone</h1>
-                <div className=" flex flex-wrap justify-center gap-5 w-full md:max-w-lg p-4">
-                    {features.map((f) => (
-                        <button
-                            key={f.id}
-                            onClick={() => navigate(f.redirect)}
-                            className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] transition ">
-                            <f.icon className="size-6" />
-                            <span className="text-sm md:text-md">{f.label}</span>
-                        </button>
-                    ))}
+        <>
+            <div className="relative h-screen w-full bg-black overflow-hidden text-white">
+                <div className="fixed right-0 left-0 flex justify-between  p-4 z-30">
+                    <UserProfile />
+                    <UserProfile />
                 </div>
+                <div className="absolute h-[90%] w-full flex flex-col justify-center items-center gap-6 px-6 mx-auto z-30">
+                    <h1 className="text-2xl md:text-3xl font-bold">Together Zone</h1>
+                    <div className=" flex flex-wrap justify-center gap-5 w-full md:max-w-lg p-4">
+                        {features.map((f) => (
+                            <button
+                                key={f.id}
+                                onClick={() => navigate(f.redirect)}
+                                className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] transition ">
+                                <f.icon className="size-6" />
+                                <span className="text-sm md:text-md">{f.label}</span>
+                            </button>
+                        ))}
+                    </div>
 
+                </div>
+                <Particles className="absolute inset-0 z-0"
+                particleColors={['#00FFFF', '#00FFFF']}
+                particleCount={280}
+                particleSpread={10}
+                speed={0.1}
+                particleBaseSize={80}
+                moveParticlesOnHover={true}
+                alphaParticles={false}
+            />
             </div>
-        </div>
+        </>
     );
 }
