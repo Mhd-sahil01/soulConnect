@@ -13,16 +13,20 @@ export default function CollaborativeDashboard() {
     ];
 
     return (
-        <div className=" h-screen w-full bg-black overflow-hidden text-white">
-            <div className="h-[90%] w-full md:w-[90%] flex flex-col justify-center items-center gap-6 px-6 md:mx-auto">
+        <div className=" h-screen w-full bg-black overflow-hidden text-white border border-red-700">
+            <div className="flex justify-between px-4">
+                <div>user1</div>
+                <div>user2</div>
+            </div>
+            <div className="h-[90%] w-full md:w-[90%] flex flex-col justify-center items-center gap-6 px-6 md:mx-auto border border-amber-300">
                 <h1 className="text-2xl md:text-3xl font-bold">Collaboration Hub</h1>
-                <div className=" flex flex-wrap justify-center gap-5 w-full max-w-md">
+                <div className=" flex flex-wrap justify-center gap-5 w-full md:max-w-lg border border-[#1B444B]/70 p-4">
                     {features.map((f) => (
                         <button
                             key={f.id}
                             onClick={() => navigate(f.redirect)}
-                            className="flex flex-col items-center justify-center gap-2 w-28 h-28 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] transition ">
-                            <f.icon className="size-6"/>
+                            className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] transition ">
+                            <f.icon className="size-6" />
                             <span className="text-sm md:text-md">{f.label}</span>
                         </button>
                     ))}

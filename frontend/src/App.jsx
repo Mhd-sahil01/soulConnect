@@ -23,19 +23,19 @@ function App() {
   }
 
   return (
-      <div className="flex flex-col min-h-screen">
-        <div className="grow">
-          <Routes>
-            <Route path="/" element={user ? <LandingPage /> : <Navigate to="/login" />} />
-            <Route path="/signup" element={!user ? <SignupPage /> : <Navigate to="/" />} />
-            <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
-            <Route path="/connect" element={user ? <ConnectPage /> : <Navigate to="/login" />} />
-            <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to={"/login"}/>} />
-          </Routes>
-        </div>
-        <Toaster />
-        <Footer />
+    <div className="flex flex-col min-h-screen">
+      <div className="grow">
+        <Routes>
+          <Route path="/" element={user ? <LandingPage /> : <Navigate to="/login" />} />
+          <Route path="/signup" element={!user ? <SignupPage /> : <Navigate to="/" />} />
+          <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
+          <Route path="/connect" element={user ? <ConnectPage /> : <Navigate to="/login" />} />
+          <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to={"/login"} />} />
+        </Routes>
       </div>
+      <Toaster />
+      <Footer />
+    </div>
   )
 }
 
