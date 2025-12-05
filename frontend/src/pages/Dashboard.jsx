@@ -22,13 +22,13 @@ export default function CollaborativeDashboard() {
                     <UserProfile />
                 </div>
                 <div className="absolute h-[90%] w-full flex flex-col justify-center items-center gap-6 px-6 mx-auto z-30">
-                    <h1 className="text-2xl md:text-3xl font-bold">Together Zone</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold hover:scale-105 transition-all duration-200">Together Zone</h1>
                     <div className=" flex flex-wrap justify-center gap-5 w-full md:max-w-lg p-4">
                         {features.map((f) => (
                             <button
                                 key={f.id}
                                 onClick={() => navigate(f.redirect)}
-                                className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] transition ">
+                                className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] hover:scale-105 transition ">
                                 <f.icon className="size-6" />
                                 <span className="text-sm md:text-md">{f.label}</span>
                             </button>
