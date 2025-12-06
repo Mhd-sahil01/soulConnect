@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import UserProfile from "../components/UserProfile";
 import Particles from "../components/Particles";
 
-export default function CollaborativeDashboard() {
+export default function Dashboard() {
     const navigate = useNavigate();
 
     const features = [

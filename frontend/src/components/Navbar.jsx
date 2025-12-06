@@ -10,7 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-[90%] md:w-[85%] h-16 flex items-center justify-between p-6 md:px-8 mx-auto mt-4 left-0 right-0 top-0 fixed z-30  backdrop-blur-xl rounded-3xl bg-[#1B444B]/70">
+    <nav className="w-[90%] md:w-[85%] h-16 flex items-center justify-between p-6 md:px-8 mx-auto mt-4 left-0 right-0 top-0 fixed z-30 backdrop-blur-xl rounded-3xl bg-[#1B444B]/70">
       <h1 className="text-white text-xl tracking-wide font-semibold">
         <span className="">SoulConnect</span>
       </h1>
