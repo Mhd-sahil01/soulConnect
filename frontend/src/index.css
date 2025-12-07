@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 * {
   cursor: url('./cursor.cur'), auto !important;
 }
@@ -24,7 +34,7 @@ body {
   @apply w-full px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all;
 }
 
-.login-input {
+.login-input, .chat-input {
   @apply w-full px-4 py-2 border border-gray-300 rounded-lg bg-black/20 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#007A8F] focus:border-[#007A8F] transition-all;
 }
 
