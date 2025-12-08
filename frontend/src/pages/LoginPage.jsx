@@ -46,8 +46,9 @@ export default function LoginPage() {
 
     return (
         <>
-            <div className="min-h-screen w-full bg-black text-white p-4 flex justify-center items-center">
-                <div className="flex flex-col lg:flex-row w-full max-w-6xl min-h-[80vh] rounded-2xl overflow-hidden shadow-xl mx-auto">
+            <div className="fixed text-3xl w-full bg-black text-white font-bold p-4 z-20">SoulConncet</div>
+            <div className="min-h-screen w-full bg-black text-white p-4 flex justify-center items-center pt-12">
+                <div className="flex flex-col lg:flex-row w-full max-w-6xl min-h-[80vh] rounded-2xl overflow-hidden shadow-xl mx-auto ">
 
                     <CommunitySection />
 

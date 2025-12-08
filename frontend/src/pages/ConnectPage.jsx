@@ -9,6 +9,7 @@ export default function ConnectPage() {
 
     return (
         <>
+            <div className="fixed text-3xl text-white font-bold p-4 z-30">SoulConncet</div>
             <div className="relative h-screen w-full bg-black text-white p-4 flex justify-center items-center">
                 <div className="absolute flex flex-col justify-center items-center w-full min-h-[80vh] rounded-2xl overflow-hidden shadow-xl mx-auto gap-4 z-20">
                     <div className="flex justify-center w-full mx-auto gap-4 p-4">
@@ -22,8 +23,8 @@ export default function ConnectPage() {
                     <div className="w-half max-w-sm sm:max-w-md p-5 sm:p-6 bg-black rounded-xl shadow-md border border-[#1B444B]/70">
                         {
                             formState === 0 ?
-                                <Join/> :
-                                <Create/>
+                                <Join /> :
+                                <Create />
                         }
                     </div>
                 </div>

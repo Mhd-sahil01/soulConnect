@@ -20,47 +20,48 @@ export default function SignupPage() {
 
     // Validate form inputs
     const validateForm = () => {
-        if(!formData.email.trim()) {
+        if (!formData.email.trim()) {
             toast.error("Email is required");
             return false;
         }
-        if(!formData.username.trim()) {
+        if (!formData.username.trim()) {
             toast.error("Username is required");
             return false;
         }
-        if(!formData.nickname.trim()) {
+        if (!formData.nickname.trim()) {
             toast.error("Nickname is required");
             return false;
         }
-        if(!formData.password) {
+        if (!formData.password) {
             toast.error("Password is required");
             return false;
         }
-        if(!/\S+@\S+\.\S+/.test(formData.email)) {
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
             toast.error("Invalid email format");
             return false;
         }
-        if(formData.password.length < 8) {
+        if (formData.password.length < 8) {
             toast.error("Password must be at least 8 characters");
             return false;
         }
 
         return true;
-     }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validateForm();
-        if(isValid == true) {
+        if (isValid == true) {
             signup(formData);
         }
     }
 
     return (
         <>
-            <div className="min-h-screen relative overflow-x-hidden bg-black text-white p-4">
+            <div className="fixed text-3xl w-full bg-black text-white font-bold p-4 z-20">SoulConncet</div>
+            <div className="min-h-screen relative overflow-x-hidden bg-black text-white p-4 mt-20">
                 <div className="flex flex-col lg:flex-row min-h-[85vh] rounded-2xl overflow-hidden shadow-xl max-w-6xl mx-auto">
-                                 
+
                     <CommunitySection />
 
                     <div className="w-full lg:w-7/12 bg-black flex flex-col justify-center items-center gap-4 p-6 sm:p-10 md:p-12 border border-[#1B444B]/70">
