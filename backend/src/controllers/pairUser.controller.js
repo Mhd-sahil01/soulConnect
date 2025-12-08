@@ -14,7 +14,7 @@ export const createPair = async (req, res) => {
         // Check if the user is already in an active pair
         if (userAlreadyPaired1 || userAlreadyPaired2) {
             return res.status(httpStatus.CONFLICT).json({ success: false, message: "Active pair exist" });
-        }
+        } 
 
         // Create a new pair with the generated code
         const newPair = await new Pair({
