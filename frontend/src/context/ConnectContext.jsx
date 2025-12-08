@@ -8,7 +8,7 @@ export const useConnectContext = () => useContext(ConnectContext);
 
 export const ConnectProvider = ({ children }) => {
 
-    const [pair, setPair] = useState({});
+    const [pair, setPair] = useState(null);
 
     const createPair = async () => {
         try {
@@ -17,9 +17,9 @@ export const ConnectProvider = ({ children }) => {
                 toast.error(response.data.message);
             }
             if(response.status == httpStatus.CREATED){
-                setPair(response.data);
+                setPair(response.data.newPair);
+                console.log(response.data.newPair)
                 toast.success(response.data.message);
-                navigate('/dashboard');
             }
         } catch (error) {
             toast.error("Internal Server Error");

@@ -1,5 +1,9 @@
+import { useConnectContext } from "../context/ConnectContext"
 
 export default function Create() {
+
+    const { createPair, pair } = useConnectContext();
+
     return (
         <>
             <h2 className="text-2xl text-center sm:text-3xl font-bold py-4">Create Room</h2>
@@ -9,19 +13,26 @@ export default function Create() {
                         htmlFor="code"
                         className="block text-sm font-medium text-white">
                         <span className="flex items-center gap-2">
-                           Your Room Code
+                            Your Room Code
                         </span>
                     </label>
-                    <h3 className="p-2">
-                        Uakgb_J5m9g-0JDMbcJqL
-                    </h3>
+
+                    {pair ? (
+                        <input
+                            className="p-2 w-full"
+                            value={pair.pairId}
+                        />
+                    ) : (
+                        <input type="text" className="p-2 w-full" value={"Press Create"} />
+                    )}
 
                     <button
                         type="button"
                         className="w-full py-3 rounded-lg shadow-sm text-sm font-medium text-white
                     bg-[#0AA5BF] hover:bg-[#088EA5] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0AA5BF] transition-all hover:scale-[1.02]"
+                        onClick={() => createPair()}
                     >
-                        {'Reset'}
+                        {'Create'}
                     </button>
                 </div>
             </div>
