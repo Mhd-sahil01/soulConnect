@@ -1,12 +1,22 @@
-import { BookKey } from "lucide-react"
+import { BookKey } from "lucide-react";
+import { useState } from "react";
+import { useConnectContext } from "../context/ConnectContext";
 
 export default function Join() {
+
+    const { joinPair } = useConnectContext();
+    const [pairId, setPairId] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        joinPair(pairId);
+    }
     
     return (
         <>
          <h2 className="text-2xl text-center sm:text-3xl font-bold py-4">Join Room</h2>
             <div className="w-full max-w-sm sm:max-w-md p-6 sm:p-6 bg-linear-to-br from-[#1E5A63] via-[#123A40] to-[#082024] rounded-xl shadow-md border border-[#1B444B]/70">
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="space-y-2">
                         <label
                             htmlFor="code"
@@ -20,7 +30,7 @@ export default function Join() {
                             id="code"
                             className="login-input"
                             placeholder="Enter Room Code"
-                            // onChange={}
+                            onChange={(e) => {setPairId(e.target.value)}}
                         />
                     </div>
 

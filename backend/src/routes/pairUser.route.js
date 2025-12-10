@@ -8,5 +8,6 @@ const pairRouter = express.Router();
 pairRouter.post("/create", protectedRoute, createPair);
 pairRouter.post("/join/:pairId", protectedRoute, joinPair);
 pairRouter.post("/unpair/:pairId", protectedRoute, unPair);
+pairRouter.get("/check/:pairId", protectedRoute, checkPair)
 
 export default pairRouter;

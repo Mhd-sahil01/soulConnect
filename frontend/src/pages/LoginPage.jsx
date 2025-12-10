@@ -23,7 +23,7 @@ export default function LoginPage() {
         }
         if (!formData.password) {
             toast.error("Password is required");
-            return false;
+            return false; 
         }
         if (!/\S+@\S+\.\S+/.test(formData.email)) {
             toast.error("Invalid email format");
