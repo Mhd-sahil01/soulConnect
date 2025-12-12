@@ -97,7 +97,9 @@ export const unPair = async (req, res) => {
 export const checkPair = async (req, res) => {
     try {
         const pairId = req.params.pairId;
+        console.log(pairId);
         const findPair = await Pair.findOne({pairId: pairId, status: "paired" });
+        console.log(pairId);
         if(!findPair) {
             return res.status(httpStatus.NOT_FOUND).json({success: false});
         }

@@ -11,16 +11,6 @@ export const ConnectProvider = ({ children }) => {
 
     const navigate = useNavigate();
     const [pair, setPair] = useState(null);
-    // const [user1, setUser1] = useState(null);
-    // const [user2, setUser2] = useState(null);
-
-    // useEffect(() => {
-    //     console.log("user1 = ", user1);
-    //     console.log("user2 = ", user2);
-    //     if (user1 && user2) {
-    //         navigate("/dashboard");
-    //     }
-    // }, [user1, user2])
 
     const createPair = async () => {
         try {
@@ -30,7 +20,7 @@ export const ConnectProvider = ({ children }) => {
             }
             if (response.status == httpStatus.CREATED) {
                 setPair(response.data.newPair);
-                console.log(response.data.newPair);
+                checkPair(response.data.newPair.pairId);
                 toast.success(response.data.message);
             }
         } catch (error) {
@@ -50,6 +40,7 @@ export const ConnectProvider = ({ children }) => {
             if (response.status == httpStatus.OK) {
                 setPair(response.data.findPair);
                 console.log(response.data.findPair);
+                navigate("/dashboard");
                 toast.success(response.data.message);
             }
         } catch (error) {
@@ -58,10 +49,26 @@ export const ConnectProvider = ({ children }) => {
         }
     }
 
+    const checkPair = async (pairId) => {
+        setInterval(async () => {
+            try {
+                console.log(pairId);
+                const response = await axiosInstance.get(`/pair/check/${pairId}`);
+                if (response.status == httpStatus.OK) {
+                    navigate("/dashboard");
+                }
+            } catch (error) {
+                toast.error("Internal Server Error");
+                console.log("Error in checkPair: ConnectContext", error.response.data.message);
+            }
+        }, 2000);
+    }
+
     const data = {
         createPair,
         pair,
         joinPair,
+        checkPair,
     }
 
     return (

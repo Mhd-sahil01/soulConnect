@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Join from '../components/Join.jsx';
 import Create from '../components/Create.jsx';
 import Particles from '../components/Particles.jsx';
+// import { useConnectContext } from '../context/ConnectContext.jsx';
 
 export default function ConnectPage() {
 
+    // const {checkPair, pairCode} = useConnectContext();
     const [formState, setFormState] = useState(0);
 
     return (
