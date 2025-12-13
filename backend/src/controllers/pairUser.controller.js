@@ -36,7 +36,9 @@ export const joinPair = async (req, res) => {
     try {
         const pairId = req.params.pairId;
         const userId = req.user._id;
-        const findPair = await Pair.findOne({ pairId: pairId, status: "waiting" });
+        const findPair = await Pair.findOne({ pairId: pairId, status: "waiting" })
+            .populate("user1", "username nickname email")
+            .populate("user2", "username nickname email");
 
         // Check if the pair exists
         if (!findPair) {
@@ -97,11 +99,13 @@ export const unPair = async (req, res) => {
 export const checkPair = async (req, res) => {
     try {
         const pairId = req.params.pairId;
-        const findPair = await Pair.findOne({pairId: pairId, status: "paired" });
-        if(!findPair) {
-            return res.status(httpStatus.NOT_FOUND).json({success: false});
+        const findPair = await Pair.findOne({ pairId: pairId, status: "paired" })
+            .populate("user1", "username nickname email")
+            .populate("user2", "username nickname email");
+        if (!findPair) {
+            return res.status(httpStatus.NOT_FOUND).json({ success: false });
         }
-        return res.status(httpStatus.OK).json({success: true, findPair});
+        return res.status(httpStatus.OK).json({ success: true, findPair });
     } catch (error) {
         console.log("error in checkPair controller");
         // res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });

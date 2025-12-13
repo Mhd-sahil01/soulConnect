@@ -2,9 +2,11 @@ import { MessageSquare, Phone, Video, Gamepad2, Tv } from "lucide-react";
 import { useNavigate } from "react-router";
 import UserProfile from "../components/UserProfile";
 import Particles from "../components/Particles";
+import { useConnectContext } from "../context/ConnectContext";
 
 export default function Dashboard() {
     const navigate = useNavigate();
+    const { pair } = useConnectContext();
 
     const features = [
         { id: "chat", label: "Chat", icon: MessageSquare, redirect: "/dashboard/chat" },
@@ -18,8 +20,8 @@ export default function Dashboard() {
         <>
             <div className="relative h-screen w-full bg-black overflow-hidden text-white">
                 <div className="fixed right-0 left-0 flex justify-between  p-4 z-30">
-                    <UserProfile />
-                    <UserProfile />
+                    <UserProfile user={pair.user1.nickname} />
+                    <UserProfile user={pair.user2.nickname}/>
                 </div>
                 <div className="absolute h-[90%] w-full flex flex-col justify-center items-center gap-6 px-6 mx-auto z-30">
                     <h1 className="text-2xl md:text-3xl font-bold hover:scale-105 transition-all duration-200">Together Zone</h1>
@@ -37,14 +39,14 @@ export default function Dashboard() {
 
                 </div>
                 <Particles className="absolute inset-0 z-0"
-                particleColors={['#00FFFF', '#00FFFF']}
-                particleCount={280}
-                particleSpread={10}
-                speed={0.1}
-                particleBaseSize={80}
-                moveParticlesOnHover={true}
-                alphaParticles={false}
-            />
+                    particleColors={['#00FFFF', '#00FFFF']}
+                    particleCount={280}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleBaseSize={80}
+                    moveParticlesOnHover={true}
+                    alphaParticles={false}
+                />
             </div>
         </>
     );

@@ -3,7 +3,7 @@ import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-export default function UserProfile() {
+export default function UserProfile({user}) {
 
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {
@@ -41,7 +41,7 @@ export default function UserProfile() {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
             >
-                <Avatar 
+                <Avatar
                     alt="User"
                     src=""
                     sx={{
@@ -55,7 +55,7 @@ export default function UserProfile() {
 
             <div className="flex flex-col justify-center">
                 <div className="text-xs md:text-sm text-green-500">online</div>
-                <div className="text-xs md:text-sm text-gray-300">Name of the person</div>
+                <div className="text-xs md:text-sm text-gray-300">{user}</div>
             </div>
         </Stack>
     );
