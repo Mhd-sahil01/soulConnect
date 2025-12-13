@@ -97,15 +97,13 @@ export const unPair = async (req, res) => {
 export const checkPair = async (req, res) => {
     try {
         const pairId = req.params.pairId;
-        console.log(pairId);
         const findPair = await Pair.findOne({pairId: pairId, status: "paired" });
-        console.log(pairId);
         if(!findPair) {
             return res.status(httpStatus.NOT_FOUND).json({success: false});
         }
-        return res.status(httpStatus.OK).json({success: true});
+        return res.status(httpStatus.OK).json({success: true, findPair});
     } catch (error) {
         console.log("error in checkPair controller");
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
+        // res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 } 

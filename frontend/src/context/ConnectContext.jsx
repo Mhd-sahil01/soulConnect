@@ -20,7 +20,9 @@ export const ConnectProvider = ({ children }) => {
             }
             if (response.status == httpStatus.CREATED) {
                 setPair(response.data.newPair);
-                checkPair(response.data.newPair.pairId);
+                let pairID = response.data.newPair.pairId;
+                checkPair(pairID);
+                localStorage.setItem("pairId", pairID);
                 toast.success(response.data.message);
             }
         } catch (error) {
@@ -40,6 +42,7 @@ export const ConnectProvider = ({ children }) => {
             if (response.status == httpStatus.OK) {
                 setPair(response.data.findPair);
                 console.log(response.data.findPair);
+                localStorage.setItem("pairId", response.data.findPair.pairId);
                 navigate("/dashboard");
                 toast.success(response.data.message);
             }
@@ -52,9 +55,9 @@ export const ConnectProvider = ({ children }) => {
     const checkPair = async (pairId) => {
         setInterval(async () => {
             try {
-                console.log(pairId);
                 const response = await axiosInstance.get(`/pair/check/${pairId}`);
                 if (response.status == httpStatus.OK) {
+                    setPair(response.data.findPair);
                     navigate("/dashboard");
                 }
             } catch (error) {
