@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (BLOCKED_ROUTES.includes(location.pathname)) return;
-    if(pairID) {
+    if (pairID) {
       checkPair(pairID);
     }
   }, [location.pathname]);

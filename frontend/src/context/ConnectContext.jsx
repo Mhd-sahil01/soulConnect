@@ -11,6 +11,7 @@ export const ConnectProvider = ({ children }) => {
 
     const navigate = useNavigate();
     const [pair, setPair] = useState(null);
+    const [isChecking, setIsChecking] = useState(true)
 
     const createPair = async () => {
         try {
@@ -64,6 +65,8 @@ export const ConnectProvider = ({ children }) => {
             } catch (error) {
                 // toast.error("Internal Server Error");
                 console.log("Error in checkPair: ConnectContext", error.response.data.message);
+            } finally {
+                setIsChecking(false);
             }
         }, 2000);
     }
@@ -73,6 +76,7 @@ export const ConnectProvider = ({ children }) => {
         pair,
         joinPair,
         checkPair,
+        isChecking,
     }
 
     return (

@@ -21,7 +21,7 @@ export default function Dashboard() {
             <div className="relative h-screen w-full bg-black overflow-hidden text-white">
                 <div className="fixed right-0 left-0 flex justify-between  p-4 z-30">
                     <UserProfile user={pair.user1.nickname} />
-                    <UserProfile user={pair.user2.nickname}/>
+                    <UserProfile user={pair.user2.nickname} />
                 </div>
                 <div className="absolute h-[90%] w-full flex flex-col justify-center items-center gap-6 px-6 mx-auto z-30">
                     <h1 className="text-2xl md:text-3xl font-bold hover:scale-105 transition-all duration-200">Together Zone</h1>

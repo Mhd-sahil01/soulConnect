@@ -1,4 +1,5 @@
 import Particles from "../components/Particles.jsx";
+import ChatInputbar from "../components/ChatInputbar.jsx";
 
 export default function ChatPage() {
   const leftCurveTail = {
@@ -79,13 +80,8 @@ export default function ChatPage() {
               </div>
             </div>
           </div>
-          {/* chat input */}
-          <div className="absolute bg-[#0C0F13] w-[83vw] bottom-0 p-2">
-            <form className="flex gap-5 px-4 py-1">
-              <input className="chat-input" type="text" />
-              <button className="px-6 py-3 md:w-max bg-[#027FAE] hover:bg-[#0393C9] text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105">Send</button>
-            </form>
-          </div>
+          {/* chat input bar */}
+          <ChatInputbar />
         </div>
         <Particles className="absolute inset-0 z-0"
           particleColors={['#00FFFF', '#00FFFF']}
