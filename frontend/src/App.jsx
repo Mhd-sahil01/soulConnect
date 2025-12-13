@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route, Navigate, useLocation } from 'react-router';
 import LandingPage from './pages/LandingPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -16,17 +16,20 @@ function App() {
 
   const { checkAuth, user, isCheckingAuth } = useAuthContext();
   const { checkPair, pair } = useConnectContext();
+  const pairID = localStorage.getItem("pairId");
+  const location = useLocation();
+  const BLOCKED_ROUTES = ["/dashboard", "/dashboard/chat"];
 
   useEffect(() => {
     checkAuth();
   }, []);
 
   useEffect(() => {
-    let pairID = localStorage.getItem("pairId");
+    if (BLOCKED_ROUTES.includes(location.pathname)) return;
     if(pairID) {
       checkPair(pairID);
     }
-  }, []);
+  }, [location.pathname]);
 
   if (isCheckingAuth) {
     return <Loading />;

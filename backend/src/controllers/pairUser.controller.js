@@ -108,6 +108,6 @@ export const checkPair = async (req, res) => {
         return res.status(httpStatus.OK).json({ success: true, findPair });
     } catch (error) {
         console.log("error in checkPair controller");
-        // res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
     }
 } 

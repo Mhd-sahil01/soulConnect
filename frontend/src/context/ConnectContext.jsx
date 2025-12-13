@@ -53,15 +53,16 @@ export const ConnectProvider = ({ children }) => {
     }
 
     const checkPair = async (pairId) => {
-        setInterval(async () => {
+        const interval = setInterval(async () => {
             try {
                 const response = await axiosInstance.get(`/pair/check/${pairId}`);
                 if (response.status == httpStatus.OK) {
                     setPair(response.data.findPair);
+                    clearInterval(interval);
                     navigate("/dashboard");
                 }
             } catch (error) {
-                toast.error("Internal Server Error");
+                // toast.error("Internal Server Error");
                 console.log("Error in checkPair: ConnectContext", error.response.data.message);
             }
         }, 2000);
