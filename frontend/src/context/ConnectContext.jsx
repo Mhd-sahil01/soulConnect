@@ -71,12 +71,31 @@ export const ConnectProvider = ({ children }) => {
         }, 2000);
     }
 
+    const unPair = async (pairId) => {
+        try {
+            const response = await axiosInstance.post(`/pair/unpair/${pairId}`);
+            if (response.status == httpStatus.FORBIDDEN) {
+                toast.error(response.data.message);
+            }
+            if (response.status == httpStatus.OK) {
+                setPair(null);
+                localStorage.removeItem("pairId");
+                toast.success(response.data.message);
+                navigate("/");
+            }
+        } catch (error) {
+            toast.error("Internal Server Error");
+            console.log("Error in unPair: ConnectContext", error.response.data.message);
+        }
+    }
+
     const data = {
         createPair,
         pair,
         joinPair,
         checkPair,
         isChecking,
+        unPair,
     }
 
     return (
