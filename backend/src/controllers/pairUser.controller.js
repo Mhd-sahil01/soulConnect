@@ -1,6 +1,7 @@
 import Pair from "../models/pairUser.js";
 import httpStatus from "http-status";
 import uniqueCode from "../config/nanoid.js";
+import Message from "../models/message.js";
 
 export const createPair = async (req, res) => {
     try {
@@ -88,7 +89,8 @@ export const unPair = async (req, res) => {
 
         // Delete the pair
         await Pair.findByIdAndDelete(unPair._id);
-        res.status(httpStatus.OK).json({ success: true, message: " Delete pair successfully" })
+        await Message.deleteMany({ pairId: unPair._id }); // for deleting the messages in the pair 
+        res.status(httpStatus.OK).json({ success: true, message: " Unpair successfully" })
 
     } catch (error) {
         console.log("error in unPair controller");

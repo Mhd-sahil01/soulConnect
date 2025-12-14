@@ -1,12 +1,19 @@
-import { MessageSquare, Phone, Video, Gamepad2, Tv } from "lucide-react";
+import { MessageSquare, Phone, Video, Gamepad2, Tv, Unplug } from "lucide-react";
 import { useNavigate } from "react-router";
 import UserProfile from "../components/UserProfile";
 import Particles from "../components/Particles";
 import { useConnectContext } from "../context/ConnectContext";
+import { useEffect } from "react";
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const { pair } = useConnectContext();
+    const { pair, unPair } = useConnectContext();
+    const pairID = localStorage.getItem("pairId")
+
+    const handleUnpair = () => {
+    if (!pairID) return;
+    unPair(pairID);
+};
 
     const features = [
         { id: "chat", label: "Chat", icon: MessageSquare, redirect: "/dashboard/chat" },
@@ -35,6 +42,12 @@ export default function Dashboard() {
                                 <span className="text-sm md:text-md">{f.label}</span>
                             </button>
                         ))}
+                        <button
+                            onClick={handleUnpair}
+                            className="flex flex-col items-center justify-center gap-2 w-32 h-32 rounded-xl p-4 bg-[#0C0F13] border border-gray-800 hover:bg-[#12171C] hover:scale-105 transition ">
+                            <Unplug className="size-6" />
+                            <span className="text-sm md:text-md">Unpair Room</span>
+                        </button>
                     </div>
 
                 </div>

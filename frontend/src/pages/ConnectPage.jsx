@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import Join from '../components/Join.jsx';
 import Create from '../components/Create.jsx';
 import Particles from '../components/Particles.jsx';
-import { useConnectContext } from '../context/ConnectContext.jsx';
-import Loading from '../components/Loading.jsx';
+// import { useConnectContext } from '../context/ConnectContext.jsx';
+// import Loading from '../components/Loading.jsx';
 
 export default function ConnectPage() {
 
-    const { isChecking } = useConnectContext();
+    // const { isChecking } = useConnectContext();
     const [formState, setFormState] = useState(0);
 
-    if (isChecking) return (
-        <Loading />
-    )
+    // if (isChecking) return (
+    //     <Loading />
+    // )
 
     return (
         <>

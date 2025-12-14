@@ -80,8 +80,8 @@ export const ConnectProvider = ({ children }) => {
             if (response.status == httpStatus.OK) {
                 setPair(null);
                 localStorage.removeItem("pairId");
-                toast.success(response.data.message);
                 navigate("/");
+                toast.success(response.data.message);
             }
         } catch (error) {
             toast.error("Internal Server Error");
